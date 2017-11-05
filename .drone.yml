@@ -16,7 +16,7 @@ pipeline:
       - go get github.com/bradrydzewski/togo
       - go build github.com/bradrydzewski/togo
       - go generate github.com/drone/drone-ui/dist
-      - go build -ldflags '-extldflags "-static" -o release/drone-server github.com/drone/drone/cmd/drone-server
+      - go build -ldflags '-extldflags "-static" -X github.com/drone/drone/version.VersionDev=build.'${DRONE_BUILD_NUMBER} -o release/drone-server github.com/drone/drone/cmd/drone-server
   
   publish_server:
     image: plugins/docker
