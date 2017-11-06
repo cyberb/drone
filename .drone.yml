@@ -29,6 +29,7 @@ pipeline:
       - go build github.com/bradrydzewski/togo
       - go generate github.com/drone/drone-ui/...
       - go install github.com/drone/drone-ui/...
+      - cd ../drone
       - go build -ldflags '-extldflags "-static" -X github.com/drone/drone/version.VersionDev=build.'${DRONE_BUILD_NUMBER} -o release/drone-server github.com/drone/drone/cmd/drone-server
       - ls -la release/drone-server
   
