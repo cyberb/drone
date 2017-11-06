@@ -8,10 +8,11 @@ pipeline:
   build:
     image: golang:1.8
     commands:
-      - go get -u github.com/cyberb/drone-ui/dist
+      - go get -u github.com/cyberb/drone-ui
       - mv /go/src/github.com/cyberb/drone-ui /go/src/github.com/drone/drone-ui
       - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
       - echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+      - apt-get install apt-transport-https
       - apt-get update && apt-get install yarn
       - cd ../drone-ui
       - yarn install
