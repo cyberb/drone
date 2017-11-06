@@ -1,3 +1,5 @@
+platform: linux/amd64
+
 workspace:
   base: /go
   path: src/github.com/drone/drone
