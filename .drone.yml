@@ -8,16 +8,17 @@ pipeline:
   build:
     image: golang:1.8
     commands:
-      - go get -u github.com/cyberb/drone-ui/dist
-      - mv /go/src/github.com/cyberb/drone-ui /go/src/github.com/drone/drone-ui
+      - go get -u github.com/drone/drone-ui/dist
+      #- go get -u github.com/cyberb/drone-ui/dist
+      #- mv /go/src/github.com/cyberb/drone-ui /go/src/github.com/drone/drone-ui
       - go get -u golang.org/x/tools/cmd/cover
       - go get -u golang.org/x/net/context
       - go get -u golang.org/x/net/context/ctxhttp
       - go get -u github.com/golang/protobuf/proto
       - go get -u github.com/golang/protobuf/protoc-gen-go
-      - go get github.com/bradrydzewski/togo
-      - go build github.com/bradrydzewski/togo
-      - go generate github.com/drone/drone-ui/dist
+      #- go get github.com/bradrydzewski/togo
+      #- go build github.com/bradrydzewski/togo
+      #- go generate github.com/drone/drone-ui/dist
       - go build -ldflags '-extldflags "-static" -X github.com/drone/drone/version.VersionDev=build.'${DRONE_BUILD_NUMBER} -o release/drone-server github.com/drone/drone/cmd/drone-server
       - ls -la release/drone-server
   
