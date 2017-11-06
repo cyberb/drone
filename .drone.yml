@@ -10,7 +10,7 @@ pipeline:
     commands:
       - go get -u github.com/cyberb/drone-ui/dist
       - mv /go/src/github.com/cyberb/drone-ui /go/src/github.com/drone/drone-ui
-      - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+      - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
       - cd drone-ui
       - yarn install
       - yarn run build
